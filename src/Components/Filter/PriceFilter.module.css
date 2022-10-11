@@ -1,0 +1,14 @@
+.button {
+    border: 1px solid grey;
+    border-radius: 2rem;
+    padding: 5px 15px 5px 15px;
+    background-color: white;
+    margin: 5px;
+    color: grey;
+}
+
+
+.select_option {
+    border: 0px solid transparent;
+    background-color: white;
+}

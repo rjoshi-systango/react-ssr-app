@@ -1,0 +1,12 @@
+.icon {
+    position: relative;
+    color: black;
+    margin: 10px;
+}
+
+
+.icon_content {
+    position: absolute;
+    bottom: 11px;
+    left: 11px;
+}
