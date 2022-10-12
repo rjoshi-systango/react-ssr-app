@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["css-loader"],
+        use: ["ignore-styles"],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,

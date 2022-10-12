@@ -1,37 +1,24 @@
-import { useSelector } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
-import CartPage from "../Pages/CartPage";
-import FavouritePage from "../Pages/FavouritePage";
-import HomePage from "../Pages/HomePage";
-import React from 'react';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import HomePage from "../pages/home";
+import ProductPage from "../pages/product";
+import StaticPage from "../pages/static";
 
+export default function Routes() {
+    console.log("routes");
+  return (
+    <Switch>
+        <Route path='/' exact>
+            <HomePage />    
+        </Route> 
+        <Route path='/product'  >
+            <ProductPage />
+        </Route> 
+        <Route path='/static-content' >
+            <StaticPage />
+        </Route> 
+    </Switch>
+    // <div></div>
 
-const Routes = () => {
-    const isLogin = useSelector(state => state.isLogin);
-
-    return (
-        <Switch>
-            <Route path="/" exact>
-                <HomePage />
-            </Route>
-            <Route path="/cart">
-                {isLogin ?
-                    <CartPage /> : <Redirect to="/" />
-                }
-                <CartPage />
-            </Route>
-            <Route path="/favourite">
-                {isLogin ?
-                    <FavouritePage /> : <Redirect to="/" />
-                }
-
-            </Route>
-
-            <Route path="*">
-                <p><span style={{ color: "red" }}>404</span> : No page found</p>
-            </Route>
-        </Switch>
-    )
+)
 }
-
-export default Routes;

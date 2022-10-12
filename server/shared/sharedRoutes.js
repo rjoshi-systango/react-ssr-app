@@ -1,21 +1,18 @@
-
 import React from "react";
-import App from "../../src/App";
-import HomePage from "../../src/Pages/HomePage";
-import CartPage from "../../src/Pages/CartPage";
-import FavouritePage from "../../src/Pages/FavouritePage";
+import App from '../../src/App';
 
-// import { Route, IndexRoute } from "react-router-dom";
+
 import { Route, IndexRoute } from 'react-router';
+import ProductPage from "../../src/pages/product";
+import StaticPage from "../../src/pages/static";
 
 
 export const routes = () => {
-    return (
-      <Route path="/" component={App} >
-        <IndexRoute component={HomePage} />
-        <Route path="/cart" component={CartPage} />
-        <Route path="/favourite" component={FavouritePage} />
-      </Route>
-    );
-  };
-  
+  return (
+    <Route path="/" component={App} >
+      {/* <IndexRoute component={HomePage} /> */}
+      <Route path="/product" component={ProductPage} />
+      <Route path="/static-content" component={StaticPage} />
+    </Route>
+  );
+};

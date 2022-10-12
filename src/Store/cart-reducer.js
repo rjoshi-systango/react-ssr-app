@@ -1,4 +1,4 @@
-import { GET_CART_ITEMS } from './cart-action-creators.es6';
+import { GET_CART_ITEMS } from './cart-action.js';
 
 export default function cart(state = {}, action) {
   switch (action.type) {

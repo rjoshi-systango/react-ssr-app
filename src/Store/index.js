@@ -1,35 +1,19 @@
-// import { configureStore } from "@reduxjs/toolkit";
 
+import { applyMiddleware, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import cart from './cart-reducer';
 
-// const store = configureStore({
-//     reducer: productDataSlice.reducer
-    
-// })
+export function configureStore(initialState = {}) {
+    const middleware = [thunk];
 
-// export default store;
-
-
-import {
-    createStore,
-    combineReducers,
-    applyMiddleware,
-    compose } from 'redux';
-    import thunkMiddleware from 'redux-thunk';
-    import loggerMiddleware from 'redux-logger';
-    import product from "./product-slice";
-
-  
-  export default function (initialStore = {}) {
-    const reducer = combineReducers({
-        product
-    });
-    const middleware = [thunkMiddleware, loggerMiddleware];
     let newCompose;
     if (typeof window !== 'undefined') {
-      newCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+        newCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
     }
+
     const composeEnhancers = newCompose || compose;
-    return composeEnhancers(
-        applyMiddleware(...middleware)
-      )(createStore)(reducer, initialStore);
-  }
+
+    const store = createStore(cart, initialState, composeEnhancers(applyMiddleware(...middleware)));
+
+    return store;
+}

@@ -8,9 +8,13 @@ export function getCartItems() {
       method: 'GET'
     }).then((response) => {
       return response.json().then((data) => {
+        let newData = [];
+        for(let key in data) {
+          newData.push(data[key])
+        }
         return dispatch({
           type: GET_CART_ITEMS,
-          data: data
+          data: newData
         });
       });
     }).catch(() => {
