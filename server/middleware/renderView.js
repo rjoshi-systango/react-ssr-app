@@ -9,6 +9,7 @@ import { routes } from '../shared/sharedRoutes';
 import HTML from '../renderer/renderComponent';
 import { configureStore } from '../../src/Store';
 import ProductPage from '../../src/pages/product';
+import { Helmet } from 'react-helmet';
 
 export default function renderView(req, res, next, Component) {
     const matchOpts = {
@@ -49,11 +50,17 @@ export default function renderView(req, res, next, Component) {
 
             Promise.all(promises).then(() => {
                 const serverState = store.getState();
-                const stringifiedServerState = JSON.stringify(serverState);
+                const stringifiedServerState = JSON.stringify(serverState.items);
                 console.log('store', store);
+                const metaText = JSON.parse(stringifiedServerState)
+                // console.log(metaText[0].name);
                 const app = ReactDOMServer.renderToString(
                     <Provider store={store}>
                         <StaticRouter >
+                            {/* <Helmet>
+                                <title>{metaText[0].name}</title>
+                                <meta name='description' content={metaText[0].tag} />
+                            </Helmet> */}
                             {Component && <Component />}
                         </StaticRouter>
                     </Provider>
@@ -62,7 +69,7 @@ export default function renderView(req, res, next, Component) {
                 console.log(app);
                 // console.log("stringifiedServerState", stringifiedServerState);
                 const html = ReactDOMServer.renderToString(
-                    <HTML html={app} serverState={stringifiedServerState} />
+                    <HTML html={app} serverState={stringifiedServerState} metaText={metaText[0]} />
                 );
                 return res.send(`<!DOCTYPE html>${html}`);
             })

@@ -4,12 +4,12 @@ const HTML = (props) => {
   return (
     <html lang="en">
       <head>
-        <title>Home</title>
+        <title>{props.metaText.name}}</title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
         />
-        <meta name="description" content="Free Web tutorials"></meta>
+        <meta name="description" content={props.metaText.tag}></meta>
         <link rel="stylesheet" href="/assets/style.css" />
       </head>
       <body>
