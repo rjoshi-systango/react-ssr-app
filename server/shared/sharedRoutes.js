@@ -5,6 +5,7 @@ import App from '../../src/App';
 import { Route, IndexRoute } from 'react-router';
 import ProductPage from "../../src/pages/product";
 import StaticPage from "../../src/pages/static";
+import ProductDetails from "../../src/component/productDetails";
 
 
 export const routes = () => {
@@ -13,6 +14,7 @@ export const routes = () => {
       {/* <IndexRoute component={HomePage} /> */}
       <Route path="/product" component={ProductPage} />
       <Route path="/static-content" component={StaticPage} />
+      <Route path="/product/:product_name" component={ProductDetails} />
     </Route>
   );
 };

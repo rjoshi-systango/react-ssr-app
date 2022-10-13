@@ -10,6 +10,7 @@ import HomePage from '../src/pages/home';
 import ProductPage from '../src/pages/product';
 import StaticPage from '../src/pages/static';
 import { matchPath } from 'react-router-dom';
+import ProductDetails from '../src/component/productDetails';
 
 const PORT = process.env.PORT || 3003;
 const app = express();
@@ -28,12 +29,17 @@ const routes = [
     {
         path: '/static-content',
         component: StaticPage
+    },
+    {
+        path: '/product/',
+        component: ProductDetails
     }
 
 ]
 
 app.get('/*', (req, res, next) => {
-    console.log("request url", req.url);
+    console.log('req', req);
+    // console.log("request url", req.url);
     const activeRoute = routes.find(route => {
         if (req.url === route.path) {
             return {
@@ -42,11 +48,10 @@ app.get('/*', (req, res, next) => {
             }
         }
     });
-    // console.log("component of current route", activeRoute.component);
     renderView(req, res, next, activeRoute?.component)
 })
 
-// app.use(express.static('./build'));
+app.use(express.static('./build'));
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

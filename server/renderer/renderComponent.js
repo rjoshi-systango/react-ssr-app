@@ -4,13 +4,12 @@ const HTML = (props) => {
   return (
     <html lang="en">
       <head>
-        <title>{props.metaText.name}}</title>
+        <title>{props.metaText.name}</title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
         />
         <meta name="description" content={props.metaText.tag}></meta>
-        <link rel="stylesheet" href="/assets/style.css" />
       </head>
       <body>
         <div
@@ -24,7 +23,7 @@ const HTML = (props) => {
           `
         }}
         />
-        <script type="application/javascript" src="/browser.js" />
+        <script type="application/javascript" src="browser.js" />
       </body>
     </html>
   );

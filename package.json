@@ -34,6 +34,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build:browser": "NODE_ENV=development webpack --config webpack.client.js --mode=development",
+    "prestart": "npm run build:browser",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
